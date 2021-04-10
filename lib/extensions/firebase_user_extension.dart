@@ -11,4 +11,7 @@ extension FirebaseUserExtension on User {
           selectedGenres: selectedGenres,
           selectedLanguage: selectedLanguage,
           balance: balance);
+
+  Future<UserModel> fromFirestore() async =>
+      await UserServices.getUser(this.uid);
 }

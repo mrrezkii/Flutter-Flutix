@@ -20,4 +20,20 @@ class UserServices {
       'profilePicture': userModel.profilePicture ?? ""
     });
   }
+
+  static Future<UserModel> getUser(String id) async {
+    DocumentSnapshot snapshot = await _userCollection.doc(id).get();
+
+    return UserModel(
+      id,
+      snapshot.data()['email'],
+      balance: snapshot.data()['balance'],
+      profilePicture: snapshot.data()['profilePicture'],
+      selectedGenres: (snapshot.data()['selectedGenres'] as List)
+          .map((e) => e.toString())
+          .toList(),
+      selectedLanguage: snapshot.data()['selectedLanguage'],
+      name: snapshot.data()['name'],
+    );
+  }
 }
