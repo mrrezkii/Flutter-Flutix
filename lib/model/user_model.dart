@@ -17,6 +17,18 @@ class UserModel extends Equatable {
       this.balance});
 
   @override
-  // TODO: implement props
-  List<Object> get props => throw UnimplementedError();
+  String toString() {
+    return "[$id] - $name, $email";
+  }
+
+  @override
+  List<Object> get props => [
+        id,
+        email,
+        name,
+        profilePicture,
+        selectedGenres,
+        selectedLanguage,
+        balance
+      ];
 }
