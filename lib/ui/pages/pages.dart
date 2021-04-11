@@ -1,3 +1,4 @@
+import 'package:bwa_flutix/bloc/blocs.dart';
 import 'package:bwa_flutix/bloc/page_bloc.dart';
 import 'package:bwa_flutix/services/services.dart';
 import 'package:bwa_flutix/shared/shared.dart';
