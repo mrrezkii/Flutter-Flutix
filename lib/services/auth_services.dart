@@ -18,7 +18,7 @@ class AuthServices {
 
       return SignInSignUpResult(userModel: userModel);
     } catch (e) {
-      return SignInSignUpResult(message: e.toString());
+      return SignInSignUpResult(message: e.toString().split("]")[1].trim());
     }
   }
 
@@ -32,7 +32,8 @@ class AuthServices {
 
       return SignInSignUpResult(userModel: userModel);
     } catch (e) {
-      return SignInSignUpResult(message: e.toString());
+      // return SignInSignUpResult(message: e.toString().split(',')[1].trim());
+      return SignInSignUpResult(message: e.toString().split("]")[1].trim());
     }
   }
 
