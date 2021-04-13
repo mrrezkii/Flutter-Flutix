@@ -14,3 +14,21 @@ class OnLoginPage extends PageState {}
 class OnSplashPage extends PageState {}
 
 class OnMainPage extends PageState {}
+
+class onRegistrationPage extends PageState {
+  final RegistrationData registrationData;
+
+  onRegistrationPage(this.registrationData);
+}
+
+class onPreferencePage extends PageState {
+  final RegistrationData registrationData;
+
+  onPreferencePage(this.registrationData);
+}
+
+class onAccoutConfirmationPage extends PageState {
+  final RegistrationData registrationData;
+
+  onAccoutConfirmationPage(this.registrationData);
+}

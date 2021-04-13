@@ -37,7 +37,11 @@ class SplashPage extends StatelessWidget {
                   "Get Started",
                   style: whiteTextFont.copyWith(fontSize: 16),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  context
+                      .read<PageBloc>()
+                      .add(GoToRegistrationPage(RegistrationData()));
+                },
                 color: mainColor,
               ),
             ),
