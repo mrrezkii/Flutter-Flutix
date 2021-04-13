@@ -34,10 +34,7 @@ class _MainPageState extends State<MainPage> {
               });
             },
             controller: pageController,
-            children: <Widget>[
-              Center(child: Text("New Movie")),
-              Center(child: Text("My Tickets"))
-            ],
+            children: <Widget>[MoviePage(), Center(child: Text("My Tickets"))],
           ),
           createCustomBottomNavBar(),
           Align(
@@ -57,7 +54,10 @@ class _MainPageState extends State<MainPage> {
                     color: Colors.black.withOpacity(0.54),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  context.read<UserBloc>().add(SignOut());
+                  AuthServices.signOut();
+                },
               ),
             ),
           ),
