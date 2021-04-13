@@ -189,19 +189,23 @@ class _SignUpPageState extends State<SignUpPage> {
                             backgroundColor: Color(0xFFFF5C83),
                             message: "Password's length min 6 characters",
                           )..show(context);
-                        } else if (EmailValidator.validate(
-                            emailController.text)) {
+                        } else if (!(EmailValidator.validate(
+                            emailController.text))) {
                           Flushbar(
                             duration: Duration(milliseconds: 1500),
                             flushbarPosition: FlushbarPosition.TOP,
                             backgroundColor: Color(0xFFFF5C83),
-                            message: "Wong formatted email address",
+                            message: "Wrong formatted email address",
                           )..show(context);
                         } else {
                           widget.registrationData.name = nameController.text;
                           widget.registrationData.email = emailController.text;
                           widget.registrationData.password =
                               passwordController.text;
+
+                          context
+                              .read<PageBloc>()
+                              .add(GoToPreferencePage(widget.registrationData));
                         }
                       },
                       child: Icon(Icons.arrow_forward),

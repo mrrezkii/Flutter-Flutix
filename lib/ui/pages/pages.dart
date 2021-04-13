@@ -6,6 +6,7 @@ import 'package:bwa_flutix/bloc/page_bloc.dart';
 import 'package:bwa_flutix/model/models.dart';
 import 'package:bwa_flutix/services/services.dart';
 import 'package:bwa_flutix/shared/shared.dart';
+import 'package:bwa_flutix/ui/widgets/widgets.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
