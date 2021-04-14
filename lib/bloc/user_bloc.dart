@@ -24,6 +24,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       UserModel updatedUser = (state as UserLoaded)
           .userModel
           .copyWith(name: event.name, profilePicture: event.profileImage);
+
+      await UserServices.updateUser(updatedUser);
       yield UserLoaded(updatedUser);
     }
   }
