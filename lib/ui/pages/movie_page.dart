@@ -5,6 +5,7 @@ class MoviePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        // note : HEADER
         Container(
           decoration: BoxDecoration(
               color: accentColor1,
@@ -94,6 +95,7 @@ class MoviePage extends StatelessWidget {
             }
           }),
         ),
+        // note : NOW PLAYING
         Container(
           margin: EdgeInsets.fromLTRB(defaultMargin, 30, defaultMargin, 12),
           child: Text("Now Playing",
@@ -126,7 +128,69 @@ class MoviePage extends StatelessWidget {
               }
             },
           ),
-        )
+        ),
+
+        // note : BROWSE MOVIE
+        Container(
+            margin: EdgeInsets.fromLTRB(defaultMargin, 30, defaultMargin, 12),
+            child: Text("Browser Movie",
+                style: blackTextFont.copyWith(
+                    fontSize: 18, fontWeight: FontWeight.bold))),
+
+        BlocBuilder<UserBloc, UserState>(builder: (_, userState) {
+          if (userState is UserLoaded) {
+            return Container(
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(
+                    userState.userModel.selectedGenres.length,
+                    (index) => BrowseButton(
+                        userState.userModel.selectedGenres[index])),
+              ),
+            );
+          } else {
+            return SpinKitFadingCircle(
+              color: mainColor,
+              size: 50,
+            );
+          }
+        }),
+
+        // note : COMING SOON
+        Container(
+          margin: EdgeInsets.fromLTRB(defaultMargin, 30, defaultMargin, 12),
+          child: Text("Coming Soon",
+              style: blackTextFont.copyWith(
+                  fontSize: 18, fontWeight: FontWeight.bold)),
+        ),
+        SizedBox(
+          height: 140,
+          child: BlocBuilder<MovieBloc, MovieState>(
+            builder: (_, movieState) {
+              if (movieState is MovieLoaded) {
+                List<MovieModel> movies = movieState.movies.sublist(10);
+
+                return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: movies.length,
+                    itemBuilder: (_, index) => Container(
+                          margin: EdgeInsets.only(
+                              left: (index == 0) ? defaultMargin : 0,
+                              right: (index == movies.length - 1)
+                                  ? defaultMargin
+                                  : 16),
+                          child: ComingSoonCard(movies[index]),
+                        ));
+              } else {
+                return SpinKitFadingCircle(
+                  color: mainColor,
+                  size: 50,
+                );
+              }
+            },
+          ),
+        ),
       ],
     );
   }
