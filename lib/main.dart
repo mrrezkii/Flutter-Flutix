@@ -1,3 +1,4 @@
+import 'package:bwa_flutix/bloc/movie_bloc.dart';
 import 'package:bwa_flutix/services/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,10 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (_) => PageBloc()),
           BlocProvider(create: (_) => UserBloc()),
-          BlocProvider(create: (_) => ThemeBloc())
+          BlocProvider(create: (_) => ThemeBloc()),
+          BlocProvider(
+            create: (_) => MovieBloc()..add(FetchMovies()),
+          )
         ],
         child: BlocBuilder<ThemeBloc, ThemeState>(
           builder: (_, themeState) => MaterialApp(
