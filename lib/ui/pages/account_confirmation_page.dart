@@ -96,7 +96,13 @@ class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
                             ),
                             onPressed: () {
                               setState(() async {
-                                isSigningUp = true;
+                                setState(() {
+                                  isSigningUp = true;
+                                });
+
+                                imageFileToUpload =
+                                    widget.registrationData.profileImage;
+
                                 var auth = widget.registrationData;
                                 SignInSignUpResult result =
                                     await AuthServices.signUp(
@@ -110,9 +116,6 @@ class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
                                   setState(() {
                                     isSigningUp = false;
                                   });
-
-                                  imageFileToUpload =
-                                      widget.registrationData.profileImage;
 
                                   Flushbar(
                                     duration: Duration(milliseconds: 1500),

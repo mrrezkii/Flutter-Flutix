@@ -16,7 +16,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:image_picker/image_picker.dart';
 
 part 'main_page.dart';
 part 'sign_in_page.dart';
@@ -26,11 +25,3 @@ part 'movie_page.dart';
 part 'sign_up_page.dart';
 part 'preference_page.dart';
 part 'account_confirmation_page.dart';
-
-Future<File> getImage() async {
-  File _image;
-  var picker = ImagePicker();
-  var pickedFile = await picker.getImage(source: ImageSource.gallery);
-  _image = File(pickedFile.path);
-  return _image;
-}
