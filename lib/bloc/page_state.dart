@@ -32,3 +32,12 @@ class onAccoutConfirmationPage extends PageState {
 
   onAccoutConfirmationPage(this.registrationData);
 }
+
+class OnMovieDetailPage extends PageState {
+  final MovieModel movie;
+
+  OnMovieDetailPage(this.movie);
+
+  @override
+  List<Object> get props => [movie];
+}

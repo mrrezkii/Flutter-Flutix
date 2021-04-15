@@ -30,3 +30,12 @@ class GoToAccountConfirmationPage extends PageEvent {
 
   GoToAccountConfirmationPage(this.registrationData);
 }
+
+class GoToMovieDetailPage extends PageEvent {
+  final MovieModel movie;
+
+  GoToMovieDetailPage(this.movie);
+
+  @override
+  List<Object> get props => [movie];
+}
