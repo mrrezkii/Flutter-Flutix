@@ -7,7 +7,7 @@ class PreferencePage extends StatefulWidget {
     "Action",
     "Drama",
     "War",
-    "Wrime"
+    "Crime"
   ];
   final List<String> languages = ["Bahasa", "English", "Japanese", "Korean"];
   final RegistrationData registrationData;
