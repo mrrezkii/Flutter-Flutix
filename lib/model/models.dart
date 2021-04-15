@@ -7,3 +7,5 @@ part 'user_model.dart';
 part 'registration_data.dart';
 part 'movie_model.dart';
 part 'promo_model.dart';
+part 'movie_detail.dart';
+part 'credits.dart';
